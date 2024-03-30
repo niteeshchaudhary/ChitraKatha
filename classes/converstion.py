@@ -13,6 +13,7 @@ class Conversation:
     
     Attributes:
         conversation_id (str): A unique identifier for the conversation.
+        title (str): The title of the conversation.
         conversation (list[Chat]): A list to store instances of Chat associated with this 
                                         conversation.
     """
@@ -25,4 +26,5 @@ class Conversation:
             conversation_id (str): A unique identifier for the conversation.
         """
         self.conversation_id: str = conversation_id  # Unique identifier for the conversation
+        self.title: str | None = None # Initially, there's no title for the conversation
         self.conversation: list[Chat] = []  # Initializes an empty list to hold Chat instances
