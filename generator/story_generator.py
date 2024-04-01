@@ -40,7 +40,7 @@ def generate_story(text):
 def generate_audio():
     global duration,audio,story
     narration_text = story
-    narration = gTTS(text=narration_text, lang='en-us', slow=True, tld='com')
+    narration = gTTS(text=narration_text, lang='en', slow=True, tld='com')
     narration.save("narration.mp3")
     audio = AudioFileClip("narration.mp3")
     duration = audio.duration
@@ -48,7 +48,7 @@ def generate_audio():
 def generate_images():
     global pipe, num_images, duration, story
     pipe = StableDiffusionPipeline.from_pretrained("digiplay/majicMIX_realistic_v6", torch_dtype=torch.float32)  # Change torch_dtype to float32
-    pipe = pipe.to("cpu")
+    pipe = pipe.to("cuda")
     pipe.safety_checker = None
 
     h = 800  # height of the image
