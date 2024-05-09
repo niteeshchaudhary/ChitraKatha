@@ -26,7 +26,7 @@ def generate_story(text):
     # Set the maximum number of tokens
     max_length = 100
     text_=text
-    prompt = "continue the story" + text_
+    prompt = "continue the story " + text_+" "
 
     # Generate the story
     story = pipe(
@@ -48,7 +48,7 @@ def generate_audio():
 def generate_images():
     global pipe, num_images, duration, story
     pipe = StableDiffusionPipeline.from_pretrained("digiplay/majicMIX_realistic_v6", torch_dtype=torch.float32)  # Change torch_dtype to float32
-    pipe = pipe.to("cuda")
+    pipe = pipe.to("cpu")
     pipe.safety_checker = None
 
     h = 800  # height of the image
